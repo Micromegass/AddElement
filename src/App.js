@@ -28,7 +28,7 @@ class App extends Component {
 
 
             <button onClick={this.addTask.bind(this)}> Add Task </button>
-
+            <button onClick={this.updateTask.bind(this)}>Modify</button>
       </div>
     );
   }
@@ -37,14 +37,29 @@ class App extends Component {
   addTask() {
 
       this.setState({
-
         tasks: this.state.tasks.concat('New Element')
 
       });
+    }
+
+  updateTask() {
+
+    const index = this.state.tasks.findIndex(task => task === "tarea2");
+
+    this.setState({
+
+      tasks: this.state.tasks.map((task, i) =>
+    
+          i === index ? "Actualizado" : task
+    
+      )
+    });
+
+  }
 
 
   }
 
-}
+
 
 export default App;
